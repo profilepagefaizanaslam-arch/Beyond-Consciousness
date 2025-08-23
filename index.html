@@ -1,20 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Beyond Consciousness — Faizan Aslam</title>
-  <meta name="description" content="Read and download 'Beyond Consciousness: The Theory of Unlimited Self' by Faizan Aslam — free, fast, mobile-friendly." />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <link rel="preload" href="assets/hero.jpg" as="image" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beyond Consciousness — Faizan Aslam (Free)</title>
+<meta name="description" content="Read and download 'Beyond Consciousness: The Theory of Unlimited Self' by Faizan Aslam — completely free." />
+<link rel="icon" href="logo.png" />
+
+<style>
+/* =========================
+   TOKENS + RESET
+   ========================= */
+:root{
+  --bg:#0b0c10;
+  --bg-2:#0f1117;
+  --text:#f2f5f7;
+  --muted:#9aa4ad;
+  --line:rgba(255,255,255,.10);
+  --glass:rgba(255,255,255,.06);
+  --brand:#6ea8fe;
+  --brand2:#8a5cff;
+  --shadow:0 18px 50px rgba(0,0,0,.35);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font:16px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background: radial-gradient(1200px 800px at 70% -10%, #1d2030 0%, var(--bg) 60%);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+img{max-width:100%;display:block}
+
+/* =========================
+   HEADER / NAV
+   ========================= */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(11,12,16,.65); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-row{display:flex;align-items:center;justify-content:space-between;min-height:72px}
+.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+.brand-logo{width:42px;height:42px;border-radius:10px;box-shadow:var(--shadow);object-fit:cover;display:none}
+.brand-text{display:flex;flex-direction:column}
+.brand-title{font-weight:800;letter-spacing:.3px}
+.brand-sub{font-size:12px;color:var(--muted)}
+/* show logo only if it loads */
+.brand-logo.loaded{display:block}
+
+.nav{display:flex;gap:18px;align-items:center}
+.nav-link{color:var(--text);text-decoration:none;opacity:.9}
+.nav-link:hover{opacity:1;text-decoration:underline}
+.theme-toggle{
+  background:transparent;border:1px solid var(--line);color:var(--text);
+  padding:8px 10px;border-radius:12px;cursor:pointer
+}
+.hamburger{display:none;background:transparent;border:0;gap:5px;flex-direction:column}
+.hamburger span{width:24px;height:2px;background:#fff;display:block;border-radius:2px}
+
+/* =========================
+   HERO
+   ========================= */
+.hero{position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden}
+.hero-bg{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.35; transform:scale(1.08);
+  display:none; /* hidden until loaded */
+}
+.hero-bg.loaded{display:block}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.65))}
+.hero-inner{position:relative;text-align:center;padding:86px 0 60px}
+.hero h1{
+  font-size:clamp(36px,6vw,64px); margin:0 0 8px;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.tagline{margin:0 auto 18px;max-width:780px;color:var(--muted);font-size:clamp(16px,2.2vw,20px)}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{
+  border:0;border-radius:14px;padding:12px 18px;font-weight:700;cursor:pointer;
+  text-decoration:none;transition:transform .15s ease, box-shadow .2s ease, background .2s ease
+}
+.btn:hover{transform:translateY(-1px)}
+.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 10px 20px rgba(108,123,255,.25)}
+.outline{background:transparent;border:1px solid var(--line);color:var(--text)}
+.ghost{background:var(--glass);color:var(--text)}
+.trust-row{margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chip{padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px}
+.hero-glow{
+  position:absolute;inset:-30% -20% auto -20%;height:70vh;pointer-events:none;
+  background:radial-gradient(600px 240px at 50% 0%, rgba(110,168,254,.18), transparent 70%),
+             radial-gradient(600px 240px at 35% 20%, rgba(138,92,255,.18), transparent 70%);
+  filter:blur(20px);
+}
+
+/* =========================
+   GLASS UTIL + REVEAL
+   ========================= */
+.glass{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid var(--line); backdrop-filter: blur(12px);
+  border-radius:var(--radius);
+}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* =========================
+   BOOK CARD
+   ========================= */
+.book-wrap{padding:36px 0 10px}
+.book-card{
+  display:grid;grid-template-columns:380px 1fr;gap:26px;align-items:center;
+  padding:24px; box-shadow:var(--shadow);
+}
+.book-visual{position:relative;padding:10px}
+.book-tilt{perspective:1000px;position:relative;transform-style:preserve-3d;transition:transform .2s ease}
+.book-cover{
+  width:100%; border-radius:14px; box-shadow:0 18px 40px rgba(0,0,0,.35);
+  transform: rotateY(0deg) translateZ(0); object-fit:cover; display:none;
+}
+.book-cover.loaded{display:block}
+.cover-fallback{
+  width:100%; height:520px; border-radius:14px;
+  background:linear-gradient(135deg,#202433,#0e111a);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+  display:grid;place-items:center;color:var(--muted);font-weight:600;letter-spacing:.3px
+}
+.spine{
+  position:absolute; left:-10px; top:12px; bottom:12px; width:14px;
+  background:linear-gradient(180deg,#1b1f2a,#0e1016); border-radius:6px;
+  box-shadow:inset 2px 0 8px rgba(255,255,255,.06),2px 0 10px rgba(0,0,0,.35);
+  transform:translateZ(-10px) rotateY(-8deg);
+}
+.shine{
+  position:absolute; inset:0; border-radius:14px; pointer-events:none;
+  background:linear-gradient(120deg, rgba(255,255,255,.12), transparent 30% 70%, rgba(255,255,255,.06));
+  mix-blend-mode:screen; opacity:.6;
+}
+.book-info h2{margin:0 0 8px}
+.lede{color:var(--muted);margin:0 0 12px}
+.bullets{margin:0 0 14px 16px;color:var(--muted)}
+.bullets li{margin:6px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* =========================
+   HIGHLIGHTS + ABOUT
+   ========================= */
+.section-title{margin:10px 0 14px 0}
+.highlights{padding:24px 0 10px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{padding:18px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.card h4{margin:0 0 8px}
+.card p{color:var(--muted);margin:0}
+
+.about{padding:24px 0 40px}
+.about-card{
+  display:grid;grid-template-columns:100px 1fr;gap:16px;align-items:center;
+  padding:18px; box-shadow:var(--shadow);
+}
+.about-logo{width:100%;border-radius:12px;object-fit:cover;display:none}
+.about-logo.loaded{display:block}
+.socials{display:flex;gap:10px;margin-top:8px}
+.socials a{padding:8px 12px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--text)}
+.socials a:hover{background:var(--glass)}
+
+/* =========================
+   FOOTER + MODAL
+   ========================= */
+.site-footer{border-top:1px solid var(--line);padding:16px 0;background:rgba(255,255,255,.02)}
+.foot-row{display:flex;justify-content:space-between;align-items:center}
+.to-top{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:6px 10px;border-radius:10px}
+
+.modal{position:fixed;inset:0;display:none}
+.modal[aria-hidden="false"]{display:block}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6)}
+.modal-panel{
+  position:absolute;inset:5% 5% auto 5%;bottom:5%;background:#000;border-radius:14px;
+  display:flex;flex-direction:column;border:1px solid var(--line);box-shadow:var(--shadow)
+}
+.modal-close{position:absolute;right:10px;top:10px;border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer}
+.modal iframe{flex:1;border:0}
+
+/* =========================
+   LIGHT THEME
+   ========================= */
+body.light{
+  --bg:#f7f8fb; --bg-2:#ffffff; --text:#0a0a0b; --muted:#5a6067; --line: rgba(10,10,11,.12);
+  background: radial-gradient(1200px 800px at 70% -10%, #ffffff 0%, #eef1ff 70%);
+}
+body.light .site-header{background:rgba(255,255,255,.7)}
+body.light .card{background:#fff}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 980px){
+  .grid-3{grid-template-columns:1fr}
+  .book-card{grid-template-columns:1fr}
+}
+@media (max-width: 860px){
+  .nav{
+    position:absolute;right:16px;top:72px;background:rgba(11,12,16,.95);
+    border:1px solid var(--line);padding:10px;border-radius:12px;display:none;flex-direction:column;gap:8px
+  }
+  .nav.open{display:flex}
+  .hamburger{display:flex}
+}
+</style>
 </head>
+
 <body>
-  <!-- Header / Nav -->
+  <!-- =========================
+       HEADER
+       ========================= -->
   <header class="site-header" id="top">
     <div class="container nav-row">
       <a href="#top" class="brand" aria-label="Home">
-        <img src="assets/logo.png" alt="FA monogram" class="brand-logo" />
+        <img src="logo.png" alt="Faizan Aslam logo" class="brand-logo" onload="this.classList.add('loaded')" />
         <div class="brand-text">
           <span class="brand-title">Faizan Aslam</span>
           <span class="brand-sub">Beyond Consciousness</span>
@@ -34,7 +238,239 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- =========================
+       HERO
+       ========================= -->
+  <section class="hero gradient-bg">
+    <img src="hero.jpg" alt="" class="hero-bg" onload="this.classList.add('loaded')" />
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <h1 class="reveal">Beyond Consciousness</h1>
+      <p id="typewriter" class="tagline reveal" aria-live="polite"></p>
+      <div class="cta-row reveal">
+        <a class="btn primary" href="book.pdf" target="_blank" rel="noopener">📖 Read Online (Free)</a>
+        <a class="btn outline" href="book.pdf" download>⬇️ Download Free (PDF)</a>
+        <button class="btn ghost" id="openReader">Quick Preview</button>
+      </div>
+      <div class="trust-row reveal">
+        <span class="chip">Free & Open Access</span>
+        <span class="chip">No Ads</span>
+        <span class="chip">Mobile Friendly</span>
+      </div>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- =========================
+       BOOK CARD
+       ========================= -->
+  <section id="book" class="container book-wrap reveal">
+    <div class="book-card glass">
+      <div class="book-visual">
+        <div class="book-tilt" id="bookTilt" aria-hidden="true">
+          <img src="book-cover.png" alt="Beyond Consciousness cover" class="book-cover" onload="this.classList.add('loaded')" />
+          <div class="cover-fallback" id="coverFallback" hidden>BOOK COVER</div>
+          <span class="spine"></span>
+          <span class="shine"></span>
+        </div>
+      </div>
+      <div class="book-info">
+        <h2>Beyond Consciousness</h2>
+        <p class="lede">
+          A concise journey through identity, mind, and meaning — blending classical wisdom, modern science,
+          and Qur’anic perspective into a clear theory of the <em>Unlimited Self</em>.
+        </p>
+        <ul class="bullets">
+          <li>Debunks the myth of a fixed “I”.</li>
+          <li>Explores the body–soul paradox.</li>
+          <li>Frames the observer’s role in reality.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn primary" href="book.pdf" target="_blank" rel="noopener">Read Online</a>
+          <a class="btn outline" href="book.pdf" download>Download</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       HIGHLIGHTS
+       ========================= -->
+  <section id="highlights" class="container highlights reveal">
+    <h3 class="section-title">Highlights</h3>
+    <div class="grid-3">
+      <article class="card">
+        <h4>What you’ll learn</h4>
+        <p>See consciousness beyond the body, question assumptions, and build a durable mental model of the self.</p>
+      </article>
+      <article class="card">
+        <h4>Why it matters</h4>
+        <p>Clarity reduces fear, increases agency, and reorients life to purpose rather than impulse.</p>
+      </article>
+      <article class="card">
+        <h4>How to read</h4>
+        <p>Skim first, then deep-read with notes. Share the PDF freely; attribution appreciated.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- =========================
+       ABOUT
+       ========================= -->
+  <section id="about" class="container about reveal">
+    <div class="about-card glass">
+      <img src="logo.png" class="about-logo" alt="FA logo" onload="this.classList.add('loaded')" />
+      <div>
+        <h3>About the Author</h3>
+        <p><strong>Faizan Aslam</strong> — student, writer, and creator of <em>Beyond Consciousness</em>, exploring the edges of identity, faith, and reason with a classic, sober tone and modern clarity.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+          <a href="#" aria-label="TikTok">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <small>© <span id="year"></span> Faizan Aslam — Beyond Consciousness</small>
+      <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <!-- =========================
+       PDF MODAL
+       ========================= -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Quick Preview">
+    <div class="modal-backdrop" id="closeModal"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" id="xClose" aria-label="Close">✕</button>
+      <iframe src="book.pdf" title="Beyond Consciousness PDF"></iframe>
+    </div>
+  </div>
+
+<script>
+/* =========================
+   UTILITIES
+   ========================= */
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+/* Year */
+$('#year').textContent = new Date().getFullYear();
+
+/* Mobile nav */
+const hamburger = $('#hamburger');
+const nav = $('#nav');
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+}
+
+/* Theme toggle with persistence */
+const themeToggle = $('#themeToggle');
+const stored = localStorage.getItem('theme');
+if (stored === 'light') document.body.classList.add('light');
+themeToggle?.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+});
+
+/* Reveal on scroll (reduced-motion aware) */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .14 });
+  $$('.reveal').forEach(el => io.observe(el));
+} else {
+  $$('.reveal').forEach(el => el.classList.add('visible'));
+}
+
+/* Typewriter subtitle */
+const twEl = $('#typewriter');
+const phrases = [
+  "Read. Reflect. Realize.",
+  "The Theory of Unlimited Self.",
+  "A classic inquiry with a modern lens."
+];
+let pi = 0, ci = 0, deleting = false;
+function type() {
+  if (!twEl) return;
+  const full = phrases[pi % phrases.length];
+  if (reduceMotion) { twEl.textContent = full; return; }
+  twEl.textContent = full.slice(0, ci);
+  if (!deleting && ci === full.length) { deleting = true; return setTimeout(type, 1300); }
+  if (deleting && ci === 0) { deleting = false; pi++; }
+  ci += deleting ? -1 : 1;
+  setTimeout(type, deleting ? 35 : 55);
+}
+type();
+
+/* 3D tilt for book cover */
+const tilt = $('#bookTilt');
+if (tilt) {
+  const cover = $('.book-cover', tilt);
+  const fallback = $('#coverFallback');
+  /* if image not loaded (error), show fallback */
+  cover.addEventListener('error', () => { fallback.hidden = false; });
+
+  let rect = null;
+  function updateTilt(e) {
+    rect = rect || tilt.getBoundingClientRect();
+    const x = (e.clientX ?? (e.touches?.[0]?.clientX || 0)) - rect.left;
+    const y = (e.clientY ?? (e.touches?.[0]?.clientY || 0)) - rect.top;
+    const cx = x / rect.width - 0.5;
+    const cy = y / rect.height - 0.5;
+    const rotateY = cx * 10;
+    const rotateX = -cy * 10;
+    tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    cover.style.transform = `translateZ(20px) rotateY(${rotateY * 0.6}deg) rotateX(${rotateX * 0.6}deg)`;
+  }
+  function resetTilt() {
+    tilt.style.transform = 'rotateX(0) rotateY(0)';
+    cover.style.transform = 'translateZ(0) rotateY(0) rotateX(0)';
+    rect = null;
+  }
+  tilt.addEventListener('mousemove', updateTilt);
+  tilt.addEventListener('mouseleave', resetTilt);
+  tilt.addEventListener('touchmove', updateTilt, { passive:true });
+  tilt.addEventListener('touchend', resetTilt);
+}
+
+/* Modal reader */
+const modal = $('#modal');
+$('#openReader')?.addEventListener('click', () => modal.setAttribute('aria-hidden','false'));
+$('#closeModal')?.addEventListener('click', () => modal.setAttribute('aria-hidden','true'));
+$('#xClose')?.addEventListener('click', () => modal.setAttribute('aria-hidden','true'));
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.setAttribute('aria-hidden','true'); });
+
+/* Smooth scroll for in-page links (nav + to-top) */
+$$('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      e.preventDefault();
+      document.querySelector(id)?.scrollIntoView({ behavior:'smooth' });
+      nav?.classList.remove('open');
+      hamburger?.setAttribute('aria-expanded','false');
+    }
+  });
+});
+</script>
+</body>
+  </html>  <!-- Hero -->
   <section class="hero gradient-bg">
     <img src="assets/hero.jpg" alt="" class="hero-bg" />
     <div class="hero-overlay"></div>
