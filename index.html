@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beyond Consciousness — Faizan Aslam</title>
+  <meta name="description" content="Read and download 'Beyond Consciousness: The Theory of Unlimited Self' by Faizan Aslam — free, fast, mobile-friendly." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preload" href="assets/hero.jpg" as="image" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header" id="top">
+    <div class="container nav-row">
+      <a href="#top" class="brand" aria-label="Home">
+        <img src="assets/logo.png" alt="FA monogram" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-title">Faizan Aslam</span>
+          <span class="brand-sub">Beyond Consciousness</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#book" class="nav-link">Book</a>
+        <a href="#highlights" class="nav-link">Highlights</a>
+        <a href="#about" class="nav-link">About</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌓</button>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero gradient-bg">
+    <img src="assets/hero.jpg" alt="" class="hero-bg" />
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <h1 class="reveal">Beyond Consciousness</h1>
+      <p id="typewriter" class="tagline reveal" aria-live="polite">
+        <!-- typewriter text injects here -->
+      </p>
+      <div class="cta-row reveal">
+        <a class="btn primary" href="book.pdf" target="_blank" rel="noopener">📖 Read Online</a>
+        <a class="btn outline" href="book.pdf" download>⬇️ Download PDF</a>
+        <button class="btn ghost" id="openReader">Quick Preview</button>
+      </div>
+      <div class="trust-row reveal">
+        <span class="chip">Free & Open Access</span>
+        <span class="chip">No Ads</span>
+        <span class="chip">Mobile Friendly</span>
+      </div>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- Book Card -->
+  <section id="book" class="container book-wrap reveal">
+    <div class="book-card glass">
+      <div class="book-visual">
+        <div class="book-tilt" id="bookTilt" aria-hidden="true">
+          <img src="assets/book-cover.jpg" alt="Beyond Consciousness cover" class="book-cover" />
+          <span class="spine"></span>
+          <span class="shine"></span>
+        </div>
+      </div>
+      <div class="book-info">
+        <h2>Beyond Consciousness</h2>
+        <p class="lede">
+          A concise journey through identity, mind, and meaning — blending classical wisdom, modern science,
+          and Qur’anic perspective into a clear theory of the <em>Unlimited Self</em>.
+        </p>
+        <ul class="bullets">
+          <li>Debunks the myth of a fixed “I”.</li>
+          <li>Explores the body–soul paradox.</li>
+          <li>Frames the observer’s role in reality.</li>
+        </ul>
+        <div class="actions">
+          <a class="btn primary" href="book.pdf" target="_blank" rel="noopener">Read Online</a>
+          <a class="btn outline" href="book.pdf" download>Download</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section id="highlights" class="container highlights reveal">
+    <h3 class="section-title">Highlights</h3>
+    <div class="grid-3">
+      <article class="card">
+        <h4>What you’ll learn</h4>
+        <p>See consciousness beyond the body, question assumptions, and build a durable mental model of the self.</p>
+      </article>
+      <article class="card">
+        <h4>Why it matters</h4>
+        <p>Clarity reduces fear, increases agency, and reorients life to purpose rather than impulse.</p>
+      </article>
+      <article class="card">
+        <h4>How to read</h4>
+        <p>Skim first, then deep-read with notes. Share the PDF freely; attribution appreciated.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container about reveal">
+    <div class="about-card glass">
+      <img src="assets/logo.png" class="about-logo" alt="FA logo" />
+      <div>
+        <h3>About the Author</h3>
+        <p><strong>Faizan Aslam</strong> — student, writer, and creator of <em>Beyond Consciousness</em>, exploring the edges of identity, faith, and reason with a classic, sober tone and modern clarity.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+          <a href="#" aria-label="TikTok">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container foot-row">
+      <small>© <span id="year"></span> Faizan Aslam — Beyond Consciousness</small>
+      <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <!-- PDF Modal -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Quick Preview">
+    <div class="modal-backdrop" id="closeModal"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" id="xClose" aria-label="Close">✕</button>
+      <iframe src="book.pdf" title="Beyond Consciousness PDF"></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  </html>
